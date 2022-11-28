@@ -59,6 +59,13 @@ def hist(suma, n):
 	plt.hist(suma, int(n/100))
 	plt.show()
 
+def write_data(suma, n, k, l):
+	with open('Python/Results/Data.dat', 'w') as f:
+		f.write(f"Dimension = {n}, Ciclos = {ciclos}, k = {k}, l = {l}\n")
+		f.write(f"Valor teorico: {n*k/(k+l)}\n")
+		f.write(f"Valor experimental total: {media(suma, 0)}\n")
+		f.write(f"Valor experimental n/20: {media(suma, n/20)}\n")
+
 
 # Numero de ciclos
 # Un ciclo consiste en seleccionar una celda y cambiar el numero que hay dentro con probabilidad k, l (1, 0)
@@ -72,11 +79,7 @@ k = 0.5
 l = 0.2
 
 suma = flecha_temportal_noequiprobable(n, ciclos, k, l)
-with open('Python/Data.dat', 'w') as f:
-	f.write(f"Dimension = {n}, Ciclos = {ciclos}, k = {k}, l = {l}\n")
-	f.write(f"Valor teorico: {n*k/(k+l)}\n")
-	f.write(f"Valor experimental total: {media(suma, 0)}\n")
-	f.write(f"Valor experimental n/20: {media(suma, n/20)}\n")
 
+write_data(suma, n, k, l)
 graph(suma, n, k, l)
 hist(suma, n)
