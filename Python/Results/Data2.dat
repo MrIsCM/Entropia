@@ -1,0 +1,4 @@
+Dimension = 10000, Ciclos = 10000000, k = 0.5, l = 0.2
+Valor teorico: 7142.857142857143
+Valor experimental total: 7139.9260847
+Valor experimental n/20: 7140.283148857443

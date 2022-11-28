@@ -26,13 +26,13 @@ def flecha_temportal_noequiprobable(n, ciclos, k, l):
 
 	# Variable auxiliar, numeros aleatorios para posteriormente compararlos con k y l
 	dado = np.random.rand(ciclos)
-
+	rand = np.random.randint(0, n-1, size=ciclos)
 	for i in range(ciclos):
-		rand = np.random.randint(0, n-1)
-		if celdas[rand]==0 and dado[i] <= k:
-			celdas[rand] = 1
-		elif celdas[rand]==1 and dado[i] <= l:
-			celdas[rand] = 0
+		
+		if celdas[rand[i]]==0 and dado[i] <= k:
+			celdas[rand[i]] = 1
+		elif celdas[rand[i]]==1 and dado[i] <= l:
+			celdas[rand[i]] = 0
 		
 		suma[i] = celdas.sum()
 
@@ -68,12 +68,12 @@ ciclos = int(1e7)
 n = 10000
 
 # Probabilidades de cambio de k: 0 --> 1, l: 1 --> 0
-k = 1
-l = 0.6
+k = 0.5
+l = 0.2
 
 suma = flecha_temportal_noequiprobable(n, ciclos, k, l)
 with open('Python/Data.dat', 'w') as f:
-	f.write(f"Dimension = {n}, Ciclos = {ciclos}, k = {k}, l = {l}")
+	f.write(f"Dimension = {n}, Ciclos = {ciclos}, k = {k}, l = {l}\n")
 	f.write(f"Valor teorico: {n*k/(k+l)}\n")
 	f.write(f"Valor experimental total: {media(suma, 0)}\n")
 	f.write(f"Valor experimental n/20: {media(suma, n/20)}\n")
