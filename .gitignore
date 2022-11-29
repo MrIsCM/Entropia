@@ -1,2 +1,8 @@
 # Ignore test files
 test.py
+
+# Ignore executables and compiled files
+*.exe
+
+# Ignore data file (exceding 100MB)
+*.dat
